@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+import mongoose from "mongoose"
 
 const comicBookSchema = new mongoose.Schema({
     id: Number,
@@ -12,4 +12,4 @@ const comicBookSchema = new mongoose.Schema({
 
 const ComicBook = mongoose.model("ComicBook", comicBookSchema)
 
-module.exports = ComicBook
+export default ComicBook

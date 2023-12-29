@@ -12,4 +12,4 @@ router.put("/:id", comicBookController.updateComicBook)
 
 router.delete("/:id", comicBookController.deleteComicBook)
 
-module.exports = router
+module.exports = { router }

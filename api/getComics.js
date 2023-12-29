@@ -1,5 +1,6 @@
 import axios from 'axios';
 import md5 from 'md5';
+import ComicBook from '../models/comicBook.js';
 
 const publicKey = 'fcc1e09f97e42021f32fec889ff48715';
 const privateKey = '8735d5f624f1ede76ff5693f42b20b6849df25a0';
@@ -25,7 +26,11 @@ async function getComics() {
     .then(response => {
       const comicsRaw = response.data.data.results
       const transformComics = transformComicData(comicsRaw)
-      console.log(transformComics)
+      transformComics.forEach(async comicData => {
+        const comic = new ComicBook(comicData)
+        await comic.save()
+      })
+      console.log('Comics saved')
     })
     .catch(error => {
       console.error('Error:', error);
