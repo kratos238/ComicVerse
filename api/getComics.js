@@ -43,4 +43,4 @@ async function getComics() {
 getComics()
 
 
-
+export default getComics

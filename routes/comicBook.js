@@ -1,6 +1,7 @@
-const express = require("express")
+import express  from "express"
 const router = express.Router()
-const comicBookController = require("../controllers/comicBookController")
+import comicBookController from "../controllers/comicBookController.js"
+
 
 router.get("/", comicBookController.getAllComicBooks)
 
@@ -12,4 +13,4 @@ router.put("/:id", comicBookController.updateComicBook)
 
 router.delete("/:id", comicBookController.deleteComicBook)
 
-module.exports = { router }
+export default router
