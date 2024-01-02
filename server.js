@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import comicBookRoutes from "./routes/comicBook.js";
-// import getComics from "./api/getComics.js";
+import getComics from "./api/getComics.js";
 
 
 
