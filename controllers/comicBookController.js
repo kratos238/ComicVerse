@@ -1,6 +1,7 @@
 import ComicBook from "../models/comicBook.js";
 
 async function getAllComicBooks(req, res) {
+    console.log(req, res)
     try {
         const comicBooks = await ComicBook.find({})
         res.json(comicBooks)
