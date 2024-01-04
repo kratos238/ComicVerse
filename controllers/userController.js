@@ -1,66 +1,6 @@
 import User from '../models/users.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-//import applicationContext from '../utils/middleware.js'
-
-// async function registerUser(req, res) {
-//     console.log(req, res)
-//   try {
-//     // grab model from context
-//     const User = req.context.models.User
-//     console.log(User)
-//     // hash the password
-//     req.body.password = await bcrypt.hash(req.body.password, 10)
-//     console.log(req.body.password)
-//     // create new User
-//     const user = await User.create(req.body)
-//     console.log(user)
-//     // respond, send back user without password
-//     const response = { username: user.username, favorites: user.favorites }
-//     res.json(response)
-//   } catch (error) {
-//     res.status(400).json({ error: error.message})
-//   }
-// }
-
-// // login route "/auth/login"
-// async function loginUser(req, res) {
-//   try {
-//     console.count("login")
-//     // grab model from context
-//     const User = req.context.models.User
-//     console.count("login")
-//     // grab username and password
-//     const { username, password } = req.body
-//     // see if user exists
-//     const user = await User.findOne({ username })
-//     if (user) {
-//       // check if password matches
-//       const doesItMatch = await bcrypt.compare(password, user.password)
-//       if (doesItMatch) {
-//         // remove password from user data
-//         const userData = { username: user.username, role: user.role }
-//         // sign token
-//         const token = jwt.sign(userData, process.env.SECRET)
-//         // respond
-//         res.cookie("token", token, { httpOnly: true }).json(userData)
-//       } else {
-//         throw "Passwords do not match"
-//       }
-//     } else {
-//       throw "User Does Not Exist"
-//     }
-//   } catch (error) {
-//     res.status(400).json({ error })
-//   }
-// }
-
-// // logout "/auth/logout"
-// function logoutUser(req, res) {
-//   res.clearCookie("token").json({ response: "You are Logged Out" })
-// }
-
-
 
 async function registerUser(req, res) {
     try {

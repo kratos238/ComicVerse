@@ -5,14 +5,13 @@ import comicBook from "./routes/comicBook.js";
 import users from "./routes/users.js"
 import cors from "cors";
 import morgan from "morgan";
-//import registerMiddleware from "./utils/middleware.js";
 // import getComics from "./api/getComics.js";
 
 
 
 dotenv.config()
 const app = express()
-//registerMiddleware(app)
+
 
 app.use(cors())
 app.use(morgan("tiny"))
