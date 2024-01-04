@@ -5,7 +5,7 @@ import comicBookController from "../controllers/comicBookController.js"
 
 router.get("/", comicBookController.getAllComicBooks)
 
-router.get("/id", comicBookController.getComicBookById)
+router.get("/:id", comicBookController.getComicBookById)
 
 router.post("/", comicBookController.createComicBook)
 

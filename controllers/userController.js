@@ -1,9 +1,14 @@
 import User from '../models/users.js'
 import bcrypt from 'bcrypt'
-import { Jwt } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 
 async function registerUser(req, res) {
     try {
+        const existingUser = await User.findOne({ email: req.body.email })
+        if (existingUser) {
+            return res.status(400).json({ message: 'Email already in use' })
+        }
+
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
         const newUser = new User({ email: req.body.email, password: hashedPassword })
         await newUser.save()
@@ -30,3 +35,30 @@ async function loginUser(req, res) {
         res.status(500).json({ message: error.message })
     }
 }
+
+
+async function addFavoriteComic(req, res) {
+    try {
+        const userId = req.user.userId; // Assuming userId is stored in req.user by your authentication middleware
+        const comicId = req.body.comicId; // The comic's ID should be sent in the request body
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            { $addToSet: { favorites: { comicId: comicId } } }, // $addToSet prevents duplicate entries
+            { new: true } // Returns the updated document
+        );
+
+        if (!updatedUser) {
+            return res.status(404).send('User not found');
+        }
+
+        res.json(updatedUser.favorites);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+async function logoutUser(req, res) {
+    res.clearCookie("token").json({ response: "You are Logged Out" })
+}
+
+export default {  registerUser, loginUser, logoutUser }
