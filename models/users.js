@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 const { Schema } = mongoose
-const favoirtueComicsSchema = new Schema({
+const favoriteComicsSchema = new Schema({
     comicId: {
         type: Schema.Types.ObjectId,
         ref: 'ComicBook'
@@ -15,9 +15,9 @@ const userSchema = new mongoose.Schema ({
     },
     password: {
         type: String,
-        unique: true
+        // unique: true
     },
-    favoirites: [favoirtueComicsSchema]
+    favorites: [favoriteComicsSchema]
 
 })
 
